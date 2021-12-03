@@ -1,0 +1,2 @@
+#{"json":{"id":"103","ingress-interface":[],"classifier":{"dst-ip-prefix":"12.12.12.120/32"},"action":{"drop":"enable"}}}
+#{"json":{"id":"104","ingress-interface":[],"classifier":{"dst-ip-prefix":"12.12.12.120/32"},"action":{"drop":"enable"}}}

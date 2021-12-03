@@ -1,0 +1,157 @@
+Aqui deixo els comandos per canviar alias als ports de cop. 
+
+OJO revisar que cap port no sigui fortilink!!  
+OJO es perden tots els alias actuals
+
+
+config vdom
+edit test
+config switch-controller managed-switch 
+edit S448DNTF19002569
+config ports
+edit port1
+set description PUR_
+next
+edit port2
+set description PUR_
+next
+edit port3
+set description PUR_
+next
+edit port4
+set description PUR_
+next
+edit port5
+set description PUR_
+next
+edit port6
+set description PUR_
+next
+edit port7
+set description PUR_
+next
+edit port8
+set description PUR_
+next
+edit port9
+set description PUR_
+next
+edit port10
+set description PUR_
+next
+edit port11
+set description PUR_
+next
+edit port12
+set description PUR_
+next
+edit port13
+set description PUR_
+next
+edit port14
+set description PUR_
+next
+edit port15
+set description PUR_
+next
+edit port16
+set description PUR_
+next
+edit port17
+set description PUR_
+next
+edit port18
+set description PUR_
+next
+edit port19
+set description PUR_
+next
+edit port20
+set description PUR_
+next
+edit port21
+set description PUR_
+next
+edit port22
+set description PUR_
+next
+edit port23
+set description PUR_
+next
+edit port24
+set description PUR_
+next
+edit port25
+set description PUR_
+next
+edit port26
+set description PUR_
+next
+edit port27
+set description PUR_
+next
+edit port28
+set description PUR_
+next
+edit port29
+set description PUR_
+next
+edit port30
+set description PUR_
+next
+edit port31
+set description PUR_
+next
+edit port32
+set description PUR_
+next
+edit port33
+set description PUR_
+next
+edit port34
+set description PUR_
+next
+edit port35
+set description PUR_
+next
+edit port36
+set description PUR_
+next
+edit port37
+set description PUR_
+next
+edit port38
+set description PUR_
+next
+edit port39
+set description PUR_
+next
+edit port40
+set description PUR_
+next
+edit port41
+set description PUR_
+next
+edit port42
+set description PUR_
+next
+edit port43
+set description PUR_
+next
+edit port44
+set description PUR_
+next
+edit port45
+set description PUR_
+next
+edit port46
+set description PUR_
+next
+edit port47
+set description PUR_
+next
+next
+end
+end
+
+

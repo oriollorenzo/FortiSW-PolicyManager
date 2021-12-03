@@ -1,0 +1,30 @@
+#
+# Fitxer on es configuren els serveis manualment, els que no estan predefinits
+# al Fortiswitch.
+# es mira des del commutador. En entrada al port.
+# Els parametres son:
+#  comment <string>
+#  protocol {ICMP | IP | TCP/UDP}
+# icmptype <0-255>
+# icmpcode <0-255>
+# protocol-number <IP protocol number>
+# tcp-portrange <dstportlow_int>[-<dstporthigh_int>:<srcportlow_int>-<srcporthigh_int>]
+# udp-portrange <dstportlow_int>[-<dstporthigh_int>:<srcportlow_int>-<srcporthigh_int>]
+# exemple: evitar que algu es monti en servidor web al port 80. Denegarem
+#          paquets amb tcp source port 80
+#          seria {"comment":"Servidor SMTP","protocol":"TCP","name":"SERVIDOR_WEB","tcp-portrange":"1-65535:80"}
+#          al port range el primer son els ports TCP desti i el segon TCP port origen
+#
+#
+{"comment":"Protocol OSPF","protocol-number":"89","protocol":"IP","name":"PROTOCOL_OSPF"}
+{"comment":"Protocol VRRP","protocol-number":"112","protocol":"IP","name":"PROTOCOL_VRRP"}
+{"comment":"Servidor SMTP","protocol":"TCP","name":"SERVIDOR_SMTP","tcp-portrange":"1-65535:25"}
+{"comment":"Servidor DNS 1","protocol":"UDP","name":"SERVIDOR_DNS_1","udp-portrange":"1-65535:53"}
+{"comment":"Servidor DNS 2","protocol":"TCP","name":"SERVIDOR_DNS_2","tcp-portrange":"1-65535:53"}
+{"comment":"Traps SNMP 1","protocol":"UDP","name":"TRAPS_SNMP_1","udp-portrange":"1-65535:162"}
+{"comment":"Traps SNMP 2","protocol":"UDP","name":"TRAPS_SNMP_2","udp-portrange":"162:1-65535"}
+{"comment":"DNS Multicast 1","protocol":"UDP","name":"DNS_MULTICAST_1","udp-portrange":"5353:1-65535"}
+{"comment":"DNS Multicast 2","protocol":"UDP","name":"DNS_MULTICAST_2","udp-portrange":"5355:1-65535"}
+{"comment":"Dropbox_Lan_discovery","protocol":"UDP","name":"DROPBOX_LAN_DISCOVERY","udp-portrange":"17500:1-65535"}
+{"comment":"MS UPnP 1","protocol":"UDP","name":"MS_UPnP_1","udp-portrange":"1900:1-65535"}
+{"comment":"MS UPnP 2","protocol":"TCP","name":"MS_UPnP_2","udp-portrange":"1-65535:5000"}

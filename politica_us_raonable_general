@@ -1,0 +1,90 @@
+# Politiques Us Raonable General
+# Per definir una nova politica: Si volem tancar un port en concret, per exemple evitar que ningu es 
+# pugui connecar al port 3030, per exemple, s'ha de procedir aixi:
+#   
+#       1 . Si el port que volem tancar no esta definit als serveis estandars que
+#           venen preconfigurats als FWS, fer el pas 2, sino es pot anar al 3
+#       2 . Crear al fitxer custom_services un servei nou, on s'especifica que es vol trobar
+#           paquets amb TCP desti 3030 (al fitxer hi ha un exemple per la sintaxi)
+#       3 . Crear una politica, del tipus Service, amb el nom que hem creat al punt 1. Vigilem
+#           amb l'id, aquest ha de ser unic, agafem un que no s'estigui utilitzant.
+#
+# A la politica es poden definir els seguents parametres al classifier:
+#
+# set cos <802.1Q CoS value to match>
+# set dscp <DSCP value to match>
+# set dst-ip-prefix <IP_address> <mask>
+# set dst-mac <MAC_address>
+# set ether-type <integer>
+# set service <service_ID>
+# set src-ip-prefix <IP_address> <mask>
+# set src-mac <MAC_address>
+# set vlan-id <VLAN_ID>
+#
+# al action ha d'incloure  drop sempre si posem un action tipus COUNT, i no un drop en
+# quant fa match, ja no mira res mes i per tant la politica d'us raonable ja no fa la seva funcio
+# Accions de contingencia
+#
+# per diagnosticar la execucio del script, esciure al switch: diagnose debug application httpsd -1
+#                                                  diagnose debug enable
+#
+#                                                  en executar l'script veiem si hi ha quelcom
+#
+# Es pot habilitar un comptador, pero no des de l'script. una  vegada creat un ACL 
+# al switch escriure: config switch acl ingress
+#                     edit 100 (per exemple)
+#                     config action
+#                     set count enable
+#  per veure contador
+#                     get switch acl counters ingress 100
+#
+# 20190403 - Tiquet 246290 - CCAT D2 planta 4 o 5 - 172.30.134.109.ge.1.19 - MAC donant servei de DHCP
+{"json":{"id":"100","ingress-interface":[%],"classifier":{"src-mac":"d0:03:4b:d2:e6:44"},"action":{"drop":"enable"}}}
+#
+# Denegar Protocols Administratius IP Spoofing
+#
+# Denegar IPv6
+{"json":{"id":"120","ingress-interface":[%],"classifier":{"ether-type":"0x86dd"},"action":{"drop":"enable"}}}
+# Denegar OSPF
+{"json":{"id":"121","ingress-interface":[%],"classifier":{"service":"PROTOCOL_OSPF"},"action":{"drop":"enable"}}}
+# Denegar Servidor SMTP
+{"json":{"id":"122","ingress-interface":[%],"classifier":{"service":"SERVIDOR_SMTP"},"action":{"drop":"enable"}}}
+# Denegar Servidor DNS 1
+{"json":{"id":"123","ingress-interface":[%],"classifier":{"service":"SERVIDOR_DNS_1"},"action":{"drop":"enable"}}}
+# Denegar Servidor DNS 2
+{"json":{"id":"124","ingress-interface":[%],"classifier":{"service":"SERVIDOR_DNS_2"},"action":{"drop":"enable"}}}
+# Denegar TRAPS SNMP
+{"json":{"id":"125","ingress-interface":[%],"classifier":{"service":"TRAPS_SNMP_1"},"action":{"drop":"enable"}}}
+# Denegar TRAPS SNMP
+{"json":{"id":"126","ingress-interface":[%],"classifier":{"service":"TRAPS_SNMP_2"},"action":{"drop":"enable"}}}
+# Denegar DNS Multicast
+{"json":{"id":"127","ingress-interface":[%],"classifier":{"service":"DNS_MULTICAST_1"},"action":{"drop":"enable"}}}
+# Denegar DNS Multicast
+{"json":{"id":"128","ingress-interface":[%],"classifier":{"service":"DNS_MULTICAST_2"},"action":{"drop":"enable"}}}
+# Denegar RIP
+{"json":{"id":"129","ingress-interface":[%],"classifier":{"service":"RIP"},"action":{"drop":"enable"}}}
+# Denegar VRRP
+{"json":{"id":"130","ingress-interface":[%],"classifier":{"service":"PROTOCOL_VRRP"},"action":{"drop":"enable"}}}
+# Denegar Servidors 10.40
+{"json":{"id":"131","ingress-interface":[%],"classifier":{"src-ip-prefix":"10.40.1.0/24"},"action":{"drop":"enable"}}}
+#
+# Denegar Protocols no suportats
+#
+# Denegar Appletalk
+{"json":{"id":"132","ingress-interface":[%],"classifier":{"ether-type":"0x809b"},"action":{"drop":"enable"}}}
+# Denegar Appletalk ARP
+{"json":{"id":"133","ingress-interface":[%],"classifier":{"ether-type":"0x80f3"},"action":{"drop":"enable"}}}
+# Denegar Microsoft LLD2
+{"json":{"id":"134","ingress-interface":[%],"classifier":{"ether-type":"0x88d9"},"action":{"drop":"enable"}}}
+# Denegar Reverse ARP
+{"json":{"id":"135","ingress-interface":[%],"classifier":{"ether-type":"0x8035"},"action":{"drop":"enable"}}}
+# Denegar Dropbox Lan Discovery 17500 UDP dest
+{"json":{"id":"136","ingress-interface":[%],"classifier":{"service":"DROPBOX_LAN_DISCOVERY"},"action":{"drop":"enable"}}}
+# Denegar MS UPnP 1 1900 UDP dest
+{"json":{"id":"137","ingress-interface":[%],"classifier":{"service":"MS_UPnP_1"},"action":{"drop":"enable"}}}
+# Denegar MS UPnP 2 5000 TCP source
+{"json":{"id":"138","ingress-interface":[%],"classifier":{"service":"MS_UPnP_2"},"action":{"drop":"enable"}}}
+# Denegar Realtek Remote Control Protocol. Protocol antibucle de Zyxel
+{"json":{"id":"139","ingress-interface":[%],"classifier":{"ether-type":"0x8899"},"action":{"drop":"enable"}}}
+# Denegar HikVision SADP (discovery protocol) tool, for managing settings on Hikvision IP network cameras.
+{"json":{"id":"140","ingress-interface":[%],"classifier":{"ether-type":"0x8033"},"action":{"drop":"enable"}}}
