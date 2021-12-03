@@ -3,7 +3,7 @@ Centralized software for deploy ACL on Fortinet switches that are managed by a F
 
 Ingress ACL on a network is recommended, because allways, there are traffic that you really know you don't want in your network. For example, you could block SMTP server, DNS, IPv6 (if you don't use it, of course), SMB (to difficult sharing folders), etc. The aim of that is to block in the perimeter the traffic you are sure you don't want in your network.
 
-This can't be made on GUI, it must be configured on CLI on every switch.
+This can be made on GUI, but it must be configured on every switch. The aim of this project, is to help on automation.
 
 The aim of this script is to let you create an ingress ACL and deploy in all the switches. The only thing you need is the IP of FG, user for FG, and admin password of FortiSwitches.
 
