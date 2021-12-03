@@ -38,7 +38,7 @@
 #  per veure contador
 #                     get switch acl counters ingress 100
 #
-# 20190403 - Tiquet 246290 - CCAT D2 planta 4 o 5 - 172.30.134.109.ge.1.19 - MAC donant servei de DHCP
+#
 {"json":{"id":"100","ingress-interface":[%],"classifier":{"src-mac":"d0:03:4b:d2:e6:44"},"action":{"drop":"enable"}}}
 #
 # Denegar Protocols Administratius IP Spoofing
@@ -65,8 +65,6 @@
 {"json":{"id":"129","ingress-interface":[%],"classifier":{"service":"RIP"},"action":{"drop":"enable"}}}
 # Denegar VRRP
 {"json":{"id":"130","ingress-interface":[%],"classifier":{"service":"PROTOCOL_VRRP"},"action":{"drop":"enable"}}}
-# Denegar Servidors 10.40
-{"json":{"id":"131","ingress-interface":[%],"classifier":{"src-ip-prefix":"10.40.1.0/24"},"action":{"drop":"enable"}}}
 #
 # Denegar Protocols no suportats
 #
