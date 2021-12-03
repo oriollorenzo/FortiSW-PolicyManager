@@ -3,11 +3,12 @@ Aqui deixo els comandos per canviar alias als ports de cop.
 OJO revisar que cap port no sigui fortilink!!  
 OJO es perden tots els alias actuals
 
+ATTENTION: this is a helper, you must check (and RECHECK), all the ports included in policy. DON'T USE THE FORTILINK PORT, as you may block traffic that you don't want to block.
 
-config vdom
-edit test
+This is intended only for user ports, not uplinks!!!
+
 config switch-controller managed-switch 
-edit S448DNTF19002569
+edit SN_SWITCH
 config ports
 edit port1
 set description PUR_
