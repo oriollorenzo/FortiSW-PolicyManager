@@ -23,6 +23,8 @@ FG>next<p>
 <p>
 <p>
 
+# This is intended for final user ports. Don't include trunk, uplinks, fortilink ports. If you do that, you may block traffic for all the user in the switch. 
+  <p> For example, blocking DNS server for user is convenient (to not let having unwanted DNS on your network), but if you block DNS server in the uplink port, nobody in the switch will have DNS.
 
 How to use:
 
